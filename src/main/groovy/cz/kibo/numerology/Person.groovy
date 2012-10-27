@@ -33,7 +33,7 @@ class Person implements Viable {
 	}
 
 	@Override
-	public int getNumberOfOutherNature() {
+	public int getNumberOfOuterNature() {
 		return Utils.getNumnerOfConsonants( name )
 	}
 
@@ -55,5 +55,9 @@ class Person implements Viable {
 	@Override
 	public int getNumberOfMotivationOfSoul() {		
 		return Utils.getNumberOfFirstLetters( name );
+	}
+	
+	public getName(){
+		return name
 	}
 }

@@ -17,11 +17,11 @@ interface Viable {
 	int getNumberOfInnerNature()
 	
 	/**
-	 * Calculates number of the outher nature.
+	 * Calculates number of the outer nature.
 	 *
 	 * @return	Integer	numerical sum of consonants in the name
 	 */
-	int getNumberOfOutherNature()
+	int getNumberOfOuterNature()
 		
 	/**
 	 * Calculates numerical sum of the birth date

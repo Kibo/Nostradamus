@@ -28,8 +28,8 @@ class PersonsTests extends GroovyTestCase{
 		assert 22 == person.getNumberOfInnerNature()
 	}
 	
-	void testGetNumberOfOutherNature(){
-		assert 9 == person.getNumberOfOutherNature()
+	void testGetNumberOfOuterNature(){
+		assert 9 == person.getNumberOfOuterNature()
 	}
 	
 	void testGetNumberOfDestiny(){
