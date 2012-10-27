@@ -3,22 +3,23 @@ package cz.kibo.numerology
 /**
  * Personal numerological indicators.
  *
- * @author Tomáš Jurman (tomasjurman@gmail.com)
+ * @author Tomas Jurman (tomasjurman@gmail.com)
  * @version 0.5.0
  **/
 class Person implements Viable {
-		
-	private String name		
-	private String dateOfBirth
+			
+	private String name
+	private Date dateOfBirth
 		
 	/**
 	 * Class constructor.
 	 * 
-	 * @params	String name	person's name
-	 * @params	String dateOfBirth	date of birth
+	 * @params	String firstname
+	 * @params	String lastname
+	 * @params	Date dateOfBirth
 	 */
-	public Person(name, dateOfBirth){
-		this.name = name
+	public Person( name, dateOfBirth){
+		this.name = name		
 		this.dateOfBirth = dateOfBirth
 	}
 
@@ -39,7 +40,7 @@ class Person implements Viable {
 
 	@Override
 	public int getNumberOfDestiny() {		
-		return Utils.getSumOfNumbers( dateOfBirth );
+		return Utils.getSumOfDate( dateOfBirth );
 	}
 
 	@Override
@@ -57,7 +58,49 @@ class Person implements Viable {
 		return Utils.getNumberOfFirstLetters( name );
 	}
 	
-	public getName(){
-		return name
+	//-- GETER/ SETTER ---------------------------
+	public String getName(){
+		return this.name
 	}
+		
+	public Date getDateOfBirth(){
+		return this.dateOfBirth
+	}	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		if (dateOfBirth == null) {
+			if (other.dateOfBirth != null)
+				return false;
+		} else if (!dateOfBirth.equals(other.dateOfBirth))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Person: " + name + " (" + String.format('%td-%<tm-%<tY', dateOfBirth) + ")";
+	}		
 }

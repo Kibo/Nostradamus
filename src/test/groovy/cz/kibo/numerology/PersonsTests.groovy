@@ -9,10 +9,10 @@ import org.junit.Before;
 class PersonsTests extends GroovyTestCase{
 	
 	def person
-
+	
 	@Before
 	public void setUp() throws Exception {		
-		person = new Person("Milan Brunclík", "10.2.1955")		
+		person = new Person("Milan Brunclík", new GregorianCalendar(1955, Calendar.FEBRUARY, 10).getTime())					
 	}
 
 	@After
@@ -47,4 +47,8 @@ class PersonsTests extends GroovyTestCase{
 	void testGetNumberOfMotivationOfSoul(){
 		assert 6 == person.getNumberOfMotivationOfSoul()
 	}	
+	
+	void testGetFirstname(){
+		assert 6 == person.getNumberOfMotivationOfSoul()
+	}
 }

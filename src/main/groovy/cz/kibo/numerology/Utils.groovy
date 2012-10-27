@@ -6,7 +6,7 @@ import java.text.Normalizer.Form;
 /**
  * Utility class for calculation of some numerological indicators.
  * 
- * @author Tomáš Jurman (tomasjurman@gmail.com)
+ * @author Tomas Jurman (tomasjurman@gmail.com)
  * @version 0.1.0
  **/
 class Utils {
@@ -32,15 +32,18 @@ class Utils {
 	}
 	
 	/**
-	 * Calculates the sum of numbers in text.	 
+	 * Calculates the sum of numbers from date.	 
 	 *
-	 * @param	String	text
+	 * @param	Date	dateOfBirth
 	 * @return	Integer	sum of numbers. Result is in range 1..9 except double numbers: 11, 22, ..99.
 	 */
-	static getSumOfNumbers( text ){
+	static getSumOfDate( dateOfBirth ){
+		
+		//24.12.2012 convert to 24122012
+		def dateOfBirthAsString = String.format('%td%<tm%<tY', dateOfBirth)
 		
 		def numbers = []
-		text.each{ letter ->
+		dateOfBirthAsString.each{ letter ->
 			if(letter.isInteger()){
 				numbers << letter.toInteger()
 			}			

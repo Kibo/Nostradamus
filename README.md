@@ -1,4 +1,4 @@
-# Nostradamus v.0.1.1
+# Nostradamus v.0.2
 
 **Library for astrological and numerological calculations.**
 
@@ -13,19 +13,28 @@ Actual version contains the calculations for basic numerological indicators:
 - Motivation of soul
 
   
-**Usage:**
+**Example:**
 
 ```
-def person = new Person("John Lennon", "9.10.1940")
-println """
-	Personal number:	${person.getNumberOfPerson()}
-	Destiny number:		${person.getNumberOfDestiny()}
-	
-	Inner natural:		${person.getNumberOfInnerNature()}
-	Outer natural:		${person.getNumberOfOuterNature()}
+def person = new Person("John Lennon", new GregorianCalendar(1940, Calendar.OCTOBER, 9).getTime() )
+println person.getNumberOfPerson()
+println person.getNumberOfDestiny()
+```
 
-	Destiny path:		${person.getNumberOfDestinyPath()}
-	Goal of live:		${person.getNumberOfGoalOfLive()}
+**Usage:**
 
-	Motivation of soul:	${person.getNumberOfMotivationOfSoul()}	
+Buld jar for your project.
+
+```
+gradle jar
+
+```
+
+**Documentation:**
+
+Generate documentation for more information.
+
+```
+gradle groovydoc
+
 ```

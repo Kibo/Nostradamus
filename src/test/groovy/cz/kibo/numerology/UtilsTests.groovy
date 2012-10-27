@@ -21,12 +21,12 @@ class UtilsTests extends GroovyTestCase{
 		assert 7 == Utils.getNumberOfFirstLetters( nameC );		
 	}
 		
-	void testGetSumOfNumbers(){		
-		def birdDateA = "18.12.1977"
-		def birdDateB = "5.12.1929"
-		
-		assert 9 == Utils.getSumOfNumbers( birdDateA );
-		assert 11 == Utils.getSumOfNumbers( birdDateB );		
+	void testGetSumOfDate(){			
+		def birdDateA = new GregorianCalendar(1977, Calendar.DECEMBER, 18).getTime()
+		def birdDateB = new GregorianCalendar(1929, Calendar.DECEMBER, 5).getTime()
+						
+		assert 9 == Utils.getSumOfDate( birdDateA );
+		assert 11 == Utils.getSumOfDate( birdDateB );		
 	}
 	
 	void testGetNumnerOfConsonants(){
