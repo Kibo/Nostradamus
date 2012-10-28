@@ -23,7 +23,7 @@ println person.getNumberOfDestiny()
 
 **Usage:**
 
-Buld jar for your project.
+Build jar for your project.
 
 ```
 gradle jar

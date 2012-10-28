@@ -6,7 +6,7 @@ import groovy.util.GroovyTestCase;
 import org.junit.After;
 import org.junit.Before;
 
-class PersonsTests extends GroovyTestCase{
+class PersonTest extends GroovyTestCase{
 	
 	def person
 	
