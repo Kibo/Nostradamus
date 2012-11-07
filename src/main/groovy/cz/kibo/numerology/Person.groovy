@@ -10,6 +10,8 @@ class Person implements Viable {
 			
 	private String name
 	private Date dateOfBirth
+	private int actualYear
+	private int actualMonth
 		
 	/**
 	 * Class constructor.
@@ -21,6 +23,10 @@ class Person implements Viable {
 	public Person( name, dateOfBirth){
 		this.name = name		
 		this.dateOfBirth = dateOfBirth
+		
+		def now = new Date()
+		this.actualYear = now.getAt( Calendar.YEAR )
+		this.actualMonth = now.getAt( Calendar.MONTH )
 	}
 
 	@Override
@@ -58,6 +64,20 @@ class Person implements Viable {
 		return Utils.getNumberOfFirstLetters( name );
 	}
 	
+	@Override
+	public int getNumberForActualYear() {			
+		return Utils.getSumOfDate( new GregorianCalendar( 
+			this.actualYear, 
+			dateOfBirth.getAt(Calendar.MONTH), 
+			dateOfBirth.getAt(Calendar.DATE))
+		.getTime(), false);
+	}
+	
+	@Override
+	public int getNumberForActualMonth() {			
+		return Utils.numericalSum( [getNumberForActualYear(), this.actualMonth + 1], false)
+	}
+	
 	//-- GETER/ SETTER ---------------------------
 	public String getName(){
 		return this.name
@@ -66,6 +86,42 @@ class Person implements Viable {
 	public Date getDateOfBirth(){
 		return this.dateOfBirth
 	}	
+		
+	/**
+	 * Get actual year.
+	 *
+	 * @return	Integer	number in format: yyyy
+	 */
+	public int getActualYear(){
+		return this.actualYear
+	}
+	
+	/**
+	 * Set actual year.
+	 *
+	 * @param	Integer	number in format: yyyy
+	 */
+	public void setActualYear( int year ){
+		this.actualYear = year
+	}
+	
+	/**
+	 * Get actual month.
+	 *
+	 * @return	Integer	number in range 0-11
+	 */
+	 public int getActualMonth(){
+		 return this.actualMonth
+	 }
+	
+	/**
+	* Set actual month.
+	*
+	* @param	Integer	number in range 0-11	
+	*/
+	public void setActualMonth( int month ){
+		this.actualMonth = month
+	}
 
 	@Override
 	public int hashCode() {

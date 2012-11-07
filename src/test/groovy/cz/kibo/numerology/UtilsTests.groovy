@@ -6,8 +6,11 @@ import groovy.util.GroovyTestCase;
 class UtilsTests extends GroovyTestCase{
 		
 	void testNumericalSum(){				
-		assert 11 == Utils.numericalSum( [5, 6] );
-		assert 1 == Utils.numericalSum( [1, 2, 3, 4] );		
+		assert 11 == Utils.numericalSum( [5, 6]);		
+		assert 1 == Utils.numericalSum( [1, 2, 3, 4]);
+		
+		assert 11 == Utils.numericalSum( [5, 6], true);
+		assert 2 == Utils.numericalSum( [5, 6], false);
 	}
 	
 	void testGetNumberOfFirstLetters(){
@@ -26,7 +29,10 @@ class UtilsTests extends GroovyTestCase{
 		def birdDateB = new GregorianCalendar(1929, Calendar.DECEMBER, 5).getTime()
 						
 		assert 9 == Utils.getSumOfDate( birdDateA );
-		assert 11 == Utils.getSumOfDate( birdDateB );		
+		assert 11 == Utils.getSumOfDate( birdDateB );	
+		
+		assert 11 == Utils.getSumOfDate( birdDateB, true );
+		assert 2 == Utils.getSumOfDate( birdDateB, false );
 	}
 	
 	void testGetNumnerOfConsonants(){

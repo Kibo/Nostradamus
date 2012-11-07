@@ -38,6 +38,17 @@ class Utils {
 	 * @return	Integer	sum of numbers. Result is in range 1..9 except double numbers: 11, 22, ..99.
 	 */
 	static getSumOfDate( dateOfBirth ){
+		getSumOfDate( dateOfBirth, true )	 
+	}
+	
+	/**
+	 * Calculates the sum of numbers from date.
+	 *
+	 * @param	Date	dateOfBirth
+	 * @param	boolean	determine whether to return double numbers. Double numbers: 11, 22, ..99.
+	 * @return	Integer	numerical sum. Result is in range 1..9 or double number if it is set
+	 */
+	static getSumOfDate( dateOfBirth, isDoubleNumber ){
 		
 		//24.12.2012 convert to 24122012
 		def dateOfBirthAsString = String.format('%td%<tm%<tY', dateOfBirth)
@@ -46,10 +57,10 @@ class Utils {
 		dateOfBirthAsString.each{ letter ->
 			if(letter.isInteger()){
 				numbers << letter.toInteger()
-			}			
+			}
 		}
 		
-		return numericalSum( numbers )	 
+		return numericalSum( numbers, isDoubleNumber)
 	}
 	
 	/**
@@ -113,7 +124,7 @@ class Utils {
 		def idx = ('a'..'z').indexOf( letter );		
 		return (idx % 9) + 1
 	}
-	
+		
 	/**
 	 * Calculate numerical sum
 	 * Method is recursive.
@@ -121,15 +132,28 @@ class Utils {
 	 * @param	List<Integer>	list of numbers
 	 * @return	Integer	numerical sum. Result is in range 1..9 except double numbers: 11, 22, ..99.
 	 */
-	static numericalSum( numbers ){
-					
+	static numericalSum( numbers ){					
+		numericalSum( numbers, true )
+	}
+	
+
+	/**
+	 * Calculate numerical sum
+	 * Method is recursive.
+	 *
+	 * @param	List<Integer>	list of numbers
+	 * @param	boolean	determine whether to return double numbers. Double numbers: 11, 22, ..99.
+	 * @return	Integer	numerical sum. Result is in range 1..9 or double number if it is set
+	*/
+	static numericalSum( numbers, isDoubleNumber ){
 		def sum = numbers.sum()
-		
+					
 		//double numbers
-		if( sum ==~ /(\d)\1/){
+		if( isDoubleNumber && 
+			sum ==~ /(\d)\1/){			
 			return sum
 		}
-		
+					
 		// range 1..9
 		if(sum <= MAX){
 			return sum
@@ -139,7 +163,7 @@ class Utils {
 		"${sum}".each{ number ->
 			numbers << number.toInteger()
 		}
-		numericalSum( numbers )
+		numericalSum( numbers, isDoubleNumber )
 	}
 	
 	/*-- PRIVATE METHODS --------------------------------------*/

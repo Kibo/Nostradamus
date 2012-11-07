@@ -50,5 +50,19 @@ interface Viable {
 	 * @return	Integer	numerical sum of the first letters in the name
 	 */
 	int getNumberOfMotivationOfSoul()
+	
+	/**
+	 * Calculates personal number for actual year
+	 *
+	 * @return	Integer	number in range 1-9
+	 */
+	int getNumberForActualYear()
+	
+	/**
+	 * Calculates personal number for actual month
+	 *
+	 * @return	Integer	number in range 1-9
+	 */
+	int getNumberForActualMonth()
 }
 

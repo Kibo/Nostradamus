@@ -27,7 +27,6 @@ Build jar for your project.
 
 ```
 gradle jar
-
 ```
 
 **Documentation:**
@@ -36,5 +35,4 @@ Generate documentation for more information.
 
 ```
 gradle groovydoc
-
 ```
