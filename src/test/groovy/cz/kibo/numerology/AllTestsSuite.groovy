@@ -14,7 +14,10 @@ public class AllTestsSuite extends TestSuite{
 		TestSuite suite = new TestSuite();
 		GroovyTestSuite gsuite = new GroovyTestSuite();		
 		suite.addTestSuite(gsuite.compile(TEST_ROOT + "PersonTests.groovy"));
-		suite.addTestSuite(gsuite.compile(TEST_ROOT + "UtilsTests.groovy"));		
+		suite.addTestSuite(gsuite.compile(TEST_ROOT + "UtilsTests.groovy"));	
+		
+		suite.addTestSuite(gsuite.compile(TEST_ROOT + "conversionTable/PythagoreanConversionTableTests.groovy"));
+		suite.addTestSuite(gsuite.compile(TEST_ROOT + "conversionTable/ChaldeanConversionTableTests.groovy"));
 		return suite;
 	}
 }

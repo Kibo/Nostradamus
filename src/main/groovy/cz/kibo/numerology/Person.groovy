@@ -4,7 +4,6 @@ package cz.kibo.numerology
  * Personal numerological indicators.
  *
  * @author Tomas Jurman (tomasjurman@gmail.com)
- * @version 0.5.0
  **/
 class Person implements Viable {
 			
