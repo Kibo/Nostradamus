@@ -4,28 +4,21 @@
 
 Actual version contains the calculations for basic numerological indicators:
 
-- Number of person
-- Inner nature
-- Outer nature
-- Number of destiny
-- Destiny path
-- Goal of life
-- Motivation of soul
-- Number for actual year nad month
-
+- Life path
+- Expression
+- Inner motivation
+- Birth day
   
 **Example:**
-
 ```
 def person = new Person("John Lennon", new GregorianCalendar(1940, Calendar.OCTOBER, 9).getTime() )
-println person.getNumberOfPerson()
-println person.getNumberOfDestiny()
+println person.lifePath()
+println person.expression()
 ```
 
 **Usage:**
 
 Build jar for your project.
-
 ```
 gradle jar
 ```

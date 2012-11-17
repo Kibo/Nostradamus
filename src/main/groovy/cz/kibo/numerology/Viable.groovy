@@ -3,66 +3,43 @@ package cz.kibo.numerology
 interface Viable {
 	
 	/**
-	 * Calculates number of person.
+	 * The Life Path is the major lesson to be learned in this life, the central focus of a person's existence.
 	 * 
-	 * @return	Integer	numerical sum of letters in the name
+	 * The Life Path is derived by finding the sum of the month, day and year of birth and reducing that sum to a single digit or master number.
+	 *
+	 * @return	int	sum
 	 */
-	int getNumberOfPerson()
+	int lifePath()
+	
+	/**
+	 * The Expression is a person´s potential natural abilities.
+	 *
+	 * The Expression is derived by finding the sum of the number values of all the letters in each name, 
+	 * reducing this sum to a single digit or master number, then adding the sums of all the names together 
+	 * and reducing that total to a single digit or master number.
+	 *
+	 * @return	int	sum
+	 */
+	int expression()
+	
+	/**
+	 * The Inner Motivation. 
+	 * Express what he wants to be, to have and to do.
+	 *
+	 * The Inner Motivation is derived by finding the sum of the number values of the vowels in each name, 
+	 * reducing this sum to a single digit or master number, then adding the sums of all the names together 
+	 * and reducing that total to a single digit or master number.
+	 *
+	 * @return	int	sum
+	 */
+	int innerMotivation()
 		
 	/**
-	 * Calculates number of the inner nature.
+	 * The Birthday is a sub-lesson to be learned in this life, a sub-focus on the life path.
 	 *
-	 * @return	Integer	numerical sum of vowels in the name
-	 */
-	int getNumberOfInnerNature()
-	
-	/**
-	 * Calculates number of the outer nature.
+	 * The Birthday is derived by reducing the day of birth to a single digit or master number.
 	 *
-	 * @return	Integer	numerical sum of consonants in the name
+	 * @return	int	sum
 	 */
-	int getNumberOfOuterNature()
-		
-	/**
-	 * Calculates numerical sum of the birth date
-	 *
-	 * @return	Integer	numerical sum  of the birth date
-	 */
-	int getNumberOfDestiny()
-	
-	/**
-	 * Calculates number of the path of destiny
-	 *
-	 * @return	Integer	numerical sum of numberOfDestiony + numberOfInnerNature
-	 */
-	int getNumberOfDestinyPath()
-	
-	/**
-	 * Calculates number of goal of live
-	 *
-	 * @return	Integer	numerical sum of numberOfPerson + numberOfDestiony
-	 */
-	int getNumberOfGoalOfLive()
-		
-	/**
-	 * Calculates number of motivation of the soul
-	 *
-	 * @return	Integer	numerical sum of the first letters in the name
-	 */
-	int getNumberOfMotivationOfSoul()
-	
-	/**
-	 * Calculates personal number for actual year
-	 *
-	 * @return	Integer	number in range 1-9
-	 */
-	int getNumberForActualYear()
-	
-	/**
-	 * Calculates personal number for actual month
-	 *
-	 * @return	Integer	number in range 1-9
-	 */
-	int getNumberForActualMonth()
+	int birthday()
 }
-

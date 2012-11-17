@@ -1,78 +1,35 @@
 package cz.kibo.numerology;
 
 import static org.junit.Assert.*;
+import cz.kibo.numerology.conversionTable.ConversionTable
+import cz.kibo.numerology.conversionTable.PythagoreanConversionTable
 import groovy.util.GroovyTestCase;
 
 class UtilsTests extends GroovyTestCase{
 		
-	void testNumericalSum(){				
-		assert 11 == Utils.numericalSum( [5, 6]);		
-		assert 1 == Utils.numericalSum( [1, 2, 3, 4]);
-		
-		assert 11 == Utils.numericalSum( [5, 6], true);
-		assert 2 == Utils.numericalSum( [5, 6], false);
-	}
-	
-	void testGetNumberOfFirstLetters(){
-		
-		def nameA = "Zdenek Dvorak"
-		def nameB = "A k m i"
-		def nameC = "Ade kth muj ihy"
-		
-		assert 3 == Utils.getNumberOfFirstLetters( nameA );
-		assert 7 == Utils.getNumberOfFirstLetters( nameB );
-		assert 7 == Utils.getNumberOfFirstLetters( nameC );		
-	}
-		
-	void testGetSumOfDate(){			
-		def birdDateA = new GregorianCalendar(1977, Calendar.DECEMBER, 18).getTime()
-		def birdDateB = new GregorianCalendar(1929, Calendar.DECEMBER, 5).getTime()
-						
-		assert 9 == Utils.getSumOfDate( birdDateA );
-		assert 11 == Utils.getSumOfDate( birdDateB );	
-		
-		assert 11 == Utils.getSumOfDate( birdDateB, true );
-		assert 2 == Utils.getSumOfDate( birdDateB, false );
-	}
-	
-	void testGetNumnerOfConsonants(){
-		def firstname = "Zdenek"
-		def lastname = "Dvorak"
-		
-		assert 1 == Utils.getNumnerOfConsonants( firstname );
-		assert 1 == Utils.getNumnerOfConsonants( lastname );
-		assert 11 == Utils.getNumnerOfConsonants( "${firstname} ${lastname}" );
-	}
-	
-	void testGetNumnerOfVowels(){
-		def firstname = "Zdenek"
-		def lastname = "Dvorak"
-		
-		assert 1 == Utils.getNumnerOfVowels( firstname );
-		assert 7 == Utils.getNumnerOfVowels( lastname );
-		assert 8 == Utils.getNumnerOfVowels( "${firstname} ${lastname}" );
-	}
+	void testNumericalSum(){	
+										
+		assert 1 == Utils.numericalSum( [1, 2, 3, 4] );				
+		assert 3 == Utils.numericalSum( [6, 6] );	
+		assert 9 == Utils.numericalSum( [3, 3, 3] );	
 				
-	void testGetNumberOfLetter(){
-		
-		assert 1 == Utils.getNumberOfLetter( 'a' );
-		assert 1 == Utils.getNumberOfLetter( 'j' );
-		assert 1 == Utils.getNumberOfLetter( 's' );		
-						
-		assert 8 == Utils.getNumberOfLetter( 'h' );
-		assert 8 == Utils.getNumberOfLetter( 'q' );
-		assert 8 == Utils.getNumberOfLetter( 'z' );
-		
-		assert 9 == Utils.getNumberOfLetter( 'i' );
-		assert 9 == Utils.getNumberOfLetter( 'r' );		
-	}
-	
-	void testGetNumberOfWords(){
-		def firstname = "Zdenek" 
-		def lastname = "Dvorak"
-				
-		assert 11 == Utils.getNumberOfWords( firstname );
-		assert 8 == Utils.getNumberOfWords( lastname );
-		assert 55 == Utils.getNumberOfWords( "${firstname} ${lastname}" );
+		assert 11 == Utils.numericalSum( [5, 6] );	
+		assert 22 == Utils.numericalSum( [11, 11] );	
+		assert 6 == Utils.numericalSum( [30, 3] );	
 	}	
+	
+	void testVowels(){
+		assert ["o","a"] == Utils.vowels( "tomas" )
+		assert ["a", "e", "i", "o", "u", "y"] == Utils.vowels( "areriroruryr" )
+	}	
+	
+	void testText2Ascii(){
+		assert "Prilis zlutoucky kun upel dabelske ody" == Utils.text2Ascii( "Příliš žluťoučký kůň úpěl ďábelské ódy" )
+	}
+	
+	void testText2Numbers(){		
+		assert [2, 6, 4, 1, 1, 1, 3, 9, 4, 1, 5] == Utils.text2Numbers("tomas jurman", new PythagoreanConversionTable() )		
+	}
 }
+
+

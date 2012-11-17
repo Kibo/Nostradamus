@@ -1,80 +1,74 @@
 package cz.kibo.numerology
 
+import cz.kibo.numerology.conversionTable.ConversionTable
+import cz.kibo.numerology.conversionTable.PythagoreanConversionTable
+
 /**
  * Personal numerological indicators.
- *
- * @author Tomas Jurman (tomasjurman@gmail.com)
  **/
 class Person implements Viable {
 			
 	private String name
 	private Date dateOfBirth
-	private int actualYear
-	private int actualMonth
+	private ConversionTable conversionTable
 		
 	/**
 	 * Class constructor.
 	 * 
-	 * @params	String firstname
-	 * @params	String lastname
+	 * @params	String fullname	
 	 * @params	Date dateOfBirth
 	 */
-	public Person( name, dateOfBirth){
-		this.name = name		
+	public Person( name, dateOfBirth ){
+		this(name, dateOfBirth, new PythagoreanConversionTable())
+	}
+	
+	/**
+	 * Class constructor.
+	 *
+	 * @param	String fullname
+	 * @param	Date dateOfBirth
+	 * @param	ConversionTable conversionTable
+	 */
+	public Person( name, dateOfBirth, conversionTable ){
+		this.name = name
 		this.dateOfBirth = dateOfBirth
-		
-		def now = new Date()
-		this.actualYear = now.getAt( Calendar.YEAR )
-		this.actualMonth = now.getAt( Calendar.MONTH )
-	}
-
-	@Override
-	public int getNumberOfPerson() {		
-		return Utils.getNumberOfWords( name )
-	}
-
-	@Override
-	public int getNumberOfInnerNature() {
-		return Utils.getNumnerOfVowels( name )
-	}
-
-	@Override
-	public int getNumberOfOuterNature() {
-		return Utils.getNumnerOfConsonants( name )
-	}
-
-	@Override
-	public int getNumberOfDestiny() {		
-		return Utils.getSumOfDate( dateOfBirth );
-	}
-
-	@Override
-	public int getNumberOfDestinyPath() {			
-		return Utils.numericalSum( [getNumberOfPerson(), getNumberOfInnerNature()] )
-	}
-
-	@Override
-	public int getNumberOfGoalOfLive() {
-		return Utils.numericalSum( [getNumberOfPerson(), getNumberOfDestiny()] )
-	}
-
-	@Override
-	public int getNumberOfMotivationOfSoul() {		
-		return Utils.getNumberOfFirstLetters( name );
+		this.conversionTable = conversionTable
 	}
 	
 	@Override
-	public int getNumberForActualYear() {			
-		return Utils.getSumOfDate( new GregorianCalendar( 
-			this.actualYear, 
-			dateOfBirth.getAt(Calendar.MONTH), 
-			dateOfBirth.getAt(Calendar.DATE))
-		.getTime(), false);
+	public int lifePath() {
+		//24.12.2012 convert to 24122012
+		def dateOfBirthAsString = String.format('%td%<tm%<tY', this.dateOfBirth)
+
+		def numbers = []
+		dateOfBirthAsString.each{ letter ->
+			if(letter.isInteger()){
+				numbers << letter.toInteger()
+			}
+		}
+
+		return Utils.numericalSum( numbers )	
 	}
-	
+
 	@Override
-	public int getNumberForActualMonth() {			
-		return Utils.numericalSum( [getNumberForActualYear(), this.actualMonth + 1], false)
+	public int expression() {
+		def text = Utils.text2Ascii( this.name.toLowerCase() )
+		def numbers = Utils.text2Numbers( text, this.conversionTable )		
+		return Utils.numericalSum( numbers )
+	}
+
+	@Override
+	public int innerMotivation() {
+		def text = Utils.text2Ascii( this.name.toLowerCase() )
+		def vowels = Utils.vowels( text ) 
+		def numbers = Utils.text2Numbers( vowels, this.conversionTable )
+		return Utils.numericalSum( numbers )
+	}
+
+	@Override
+	public int birthday() {
+		def day = dateOfBirth.getAt( Calendar.DAY_OF_MONTH )
+		return Utils.numericalSum( [day] )
 	}
 	
 	//-- GETER/ SETTER ---------------------------
@@ -86,42 +80,6 @@ class Person implements Viable {
 		return this.dateOfBirth
 	}	
 		
-	/**
-	 * Get actual year.
-	 *
-	 * @return	Integer	number in format: yyyy
-	 */
-	public int getActualYear(){
-		return this.actualYear
-	}
-	
-	/**
-	 * Set actual year.
-	 *
-	 * @param	Integer	number in format: yyyy
-	 */
-	public void setActualYear( int year ){
-		this.actualYear = year
-	}
-	
-	/**
-	 * Get actual month.
-	 *
-	 * @return	Integer	number in range 0-11
-	 */
-	 public int getActualMonth(){
-		 return this.actualMonth
-	 }
-	
-	/**
-	* Set actual month.
-	*
-	* @param	Integer	number in range 0-11	
-	*/
-	public void setActualMonth( int month ){
-		this.actualMonth = month
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
