@@ -20,11 +20,7 @@ class PythagoreanConversionTable implements ConversionTable{
 	
 	@Override
 	public int getNumberOfLetter(String letter) {				
-		try{
-			return TABLE[letter.toLowerCase()];
-		}catch(Exception e){
-			throw new IllegalArgumentException("${letter} is not in table.")
-		}
+		return TABLE[letter.toLowerCase()] != null ? TABLE[letter.toLowerCase()]: 0
 	}
 	
 	@Override

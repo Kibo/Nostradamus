@@ -63,8 +63,7 @@ class Utils {
 	 *
 	 * @param	String text
 	 * @param	ConversionTable conversionTable
-	 * @return	List<Integer> numbers
-	 * @throws	IllegalArgumentException letter is not in table.
+	 * @return	List<Integer> numbers	 
 	 */
 	static text2Numbers( text, conversionTable ){	
 		def numbers = []

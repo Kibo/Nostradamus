@@ -10,6 +10,7 @@ Actual version contains the calculations for basic numerological indicators:
 - Birth day
   
 **Example:**
+
 ```
 def person = new Person("John Lennon", new GregorianCalendar(1940, Calendar.OCTOBER, 9).getTime() )
 println person.lifePath()
@@ -19,6 +20,7 @@ println person.expression()
 **Usage:**
 
 Build jar for your project.
+
 ```
 gradle jar
 ```

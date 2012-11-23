@@ -46,18 +46,9 @@ class PythagoreanConversionTableTests extends GroovyTestCase{
 	}
 	
 	
-	void testNonsense(){
-		
-		shouldFail(IllegalArgumentException) {
-			ct.getNumberOfLetter("");
-		}
-					
-		shouldFail(IllegalArgumentException) {
-			ct.getNumberOfLetter("ab");
-		}
-		
-		shouldFail(IllegalArgumentException) {
-			ct.getNumberOfLetter("1");
-		}			
+	void testNonsense(){			
+		assert 0 == ct.getNumberOfLetter("");
+		assert 0 == ct.getNumberOfLetter("abc");
+		assert 0 == ct.getNumberOfLetter("1");			
 	}
 }

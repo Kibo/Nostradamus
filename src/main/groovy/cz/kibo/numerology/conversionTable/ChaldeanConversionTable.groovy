@@ -25,12 +25,8 @@ class ChaldeanConversionTable implements ConversionTable{
 						"y":1]
 	
 	@Override
-	public int getNumberOfLetter(String letter) {				
-		try{
-			return TABLE[letter.toLowerCase()];
-		}catch(Exception e){
-			throw new IllegalArgumentException("${letter} is not in table.")
-		}
+	public int getNumberOfLetter(String letter) {							
+		return TABLE[letter.toLowerCase()] != null ? TABLE[letter.toLowerCase()]: 0
 	}
 	
 	@Override
