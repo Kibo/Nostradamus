@@ -33,6 +33,6 @@ Generate documentation for more information.
 gradle groovydoc
 ```
 
-**Demo**
+**Demo:**
 
-This web project [numerology-astrology](http://astrology-numerology.appspot.com/ "numerology-astrology") uses Nostradamus.
+Web project [numerology-astrology](http://astrology-numerology.appspot.com/ "numerology-astrology") uses Nostradamus for calculating magic numbers.
