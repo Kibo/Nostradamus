@@ -32,3 +32,7 @@ Generate documentation for more information.
 ```
 gradle groovydoc
 ```
+
+**Demo**
+
+This web project [numerology-astrology](http://astrology-numerology.appspot.com/ "numerology-astrology") uses Nostradamus.
